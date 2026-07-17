@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="landing-page">
+    <div class="container landing-content text-center">
+        <p class="landing-label">Online Job Search Platform</p>
+
+        <h1 class="landing-title">Find Your Dream Career Today</h1>
+
+        <p class="landing-subtitle">
+            Whether you're looking for your next opportunity or searching for the right talent,
+            HirayaCareers connects job seekers and employers in one secure platform.
+        </p>
+
+        <div class="landing-buttons">
+            <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-lg px-5">
+                Login
+            </a>
+
+            <a asp-controller="Account" asp-action="Register" class="btn btn-outline-primary btn-lg px-5">
+                Create Account
+            </a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Job Seeker Dashboard";
+}
+
+<section class="dashboard-page">
+    <div class="container">
+        <div class="dashboard-header">
+            <p class="landing-label">Job Seeker Dashboard</p>
+            <h1 class="dashboard-title">Welcome to HirayaCareers</h1>
+            <p class="dashboard-subtitle">
+                Browse job opportunities, track your applications, and manage your career journey.
+            </p>
+        </div>
+
+        <div class="row g-4 mt-2">
+            <div class="col-md-4">
+                <div class="dashboard-card">
+                    <h5>Available Jobs</h5>
+                    <p class="dashboard-number">@ViewBag.AvailableJobs</p>
+                    <span>Explore current job openings.</span>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="dashboard-card">
+                    <h5>My Applications</h5>
+                    <p class="dashboard-number">@ViewBag.MyApplications</p>
+                    <span>Track submitted applications.</span>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="dashboard-card">
+                    <h5>Profile Status</h5>
+                    <p class="dashboard-number">@ViewBag.ProfileStatus</p>
+                    <span>Complete your profile details.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-actions mt-4">
+            <a asp-controller="Jobs" asp-action="Index" class="btn btn-primary btn-lg">
+                Browse Jobs
+            </a>
+
+            <a asp-controller="Applications" asp-action="MyApplications" class="btn btn-outline-primary btn-lg">
+                My Applications
+            </a>
+        </div>
+    </div>
+</section>

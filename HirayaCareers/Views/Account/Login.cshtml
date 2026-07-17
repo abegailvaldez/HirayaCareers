@@ -1,0 +1,56 @@
+﻿@model HirayaCareers.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<section class="auth-page">
+    <div class="container">
+        <div class="auth-card login-card">
+            <div class="text-center mb-3">
+                <p class="landing-label">Welcome Back</p>
+
+                <h1 class="auth-title">Login to HirayaCareers</h1>
+
+                <p class="auth-subtitle">
+                    Access your dashboard and continue your career journey.
+                </p>
+            </div>
+
+            <form asp-action="Login" asp-controller="Account" method="post">
+                <div class="row g-2">
+                    <div class="col-12">
+                        <label class="form-label">Email Address</label>
+                        <input asp-for="Email" class="form-control" placeholder="Enter email address" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Password</label>
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Enter password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    </div>
+
+                    <div class="col-12 d-grid mt-3">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <p class="text-center mt-3 mb-0">
+                Don't have an account?
+                <a asp-controller="Account" asp-action="Register">Create account</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

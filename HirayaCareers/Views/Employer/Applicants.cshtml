@@ -1,0 +1,104 @@
+﻿@model List<HirayaCareers.Models.JobApplication>
+
+@{
+    ViewData["Title"] = "Applicants";
+}
+
+<section class="jobs-page">
+    <div class="container">
+
+        <div class="text-center mb-4">
+            <p class="landing-label">Applicants</p>
+
+            <h1 class="jobs-title">Job Applicants</h1>
+
+            <p class="jobs-subtitle">
+                Review applications submitted for your job postings.
+            </p>
+        </div>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success text-center">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        @if (Model.Any())
+        {
+            @foreach (var application in Model)
+            {
+                <div class="job-card">
+                    <div>
+                        <h5>@application.User?.FirstName @application.User?.LastName</h5>
+                        <p>
+                            @application.Job?.Title • Applied on @application.AppliedAt.ToString("MMMM dd, yyyy")
+                        </p>
+                        <small class="text-muted">
+                            Status: @application.Status
+                        </small>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <form asp-controller="Employer"
+                              asp-action="UpdateStatus"
+                              asp-route-id="@application.JobApplicationId"
+                              method="post">
+
+                            <input type="hidden" name="status" value="Accepted" />
+
+                            <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to accept this applicant?');">
+                                Accept
+                            </button>
+                        </form>
+
+                        <form asp-controller="Employer"
+                              asp-action="UpdateStatus"
+                              asp-route-id="@application.JobApplicationId"
+                              method="post">
+
+                            <input type="hidden" name="status" value="Rejected" />
+
+                            <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to reject this applicant?');">
+                                Reject
+                            </button>
+                        </form>
+
+                        @if (!string.IsNullOrWhiteSpace(application.ResumePath))
+                        {
+                            var extension = System.IO.Path
+                                .GetExtension(application.ResumePath)
+                                .ToLowerInvariant();
+
+                            var buttonText = extension == ".pdf"
+                                ? "View Resume"
+                                : "Download Resume";
+
+                            <a href="@application.ResumePath"
+                               target="_blank"
+                               class="btn btn-outline-primary">
+                                @buttonText
+                            </a>
+                        }
+                        else
+                        {
+                            <button type="button"
+                                    class="btn btn-outline-secondary"
+                                    disabled>
+                                No Resume
+                            </button>
+                        }
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-info text-center">
+                <h5>No applicants yet.</h5>
+                <p>No one has applied for this job yet.</p>
+            </div>
+        }
+
+    </div>
+</section>

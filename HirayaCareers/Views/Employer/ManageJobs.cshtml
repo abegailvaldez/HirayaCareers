@@ -1,0 +1,82 @@
+﻿@model List<HirayaCareers.Models.Job>
+@{
+    ViewData["Title"] = "Manage Jobs";
+}
+
+<section class="jobs-page">
+    <div class="container">
+        <div class="text-center mb-4">
+            <p class="landing-label">Manage Jobs</p>
+            <h1 class="jobs-title">Your Posted Job Listings</h1>
+            <p class="jobs-subtitle">Edit, delete, or review applicants for your job posts.</p>
+        </div>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success text-center">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        @if (Model.Any())
+        {
+            @foreach (var job in Model)
+            {
+                <div class="job-card">
+                    <div>
+                        <h5>@job.Title</h5>
+                        <p>
+                            @job.CompanyName • @job.Location • @job.EmploymentType
+                        </p>
+                        <small class="text-muted">
+                            Posted on @job.DatePosted.ToString("MMMM dd, yyyy")
+                        </small>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <a asp-controller="Employer"
+                           asp-action="Applicants"
+                           asp-route-id="@job.JobId"
+                           class="btn btn-outline-primary">
+                            Applicants
+                        </a>
+
+                        <a asp-controller="Employer"
+                           asp-action="EditJob"
+                           asp-route-id="@job.JobId"
+                           class="btn btn-outline-secondary">
+                            Edit
+                        </a>
+
+                        <form asp-action="DeleteJob"
+                              asp-controller="Employer"
+                              asp-route-id="@job.JobId"
+                              method="post"
+                              style="display:inline;">
+
+                            <button type="submit"
+                                    class="btn btn-outline-danger"
+                                    onclick="return confirm('Deleting this job will also permanently delete all related applications. Continue?');">
+                                Delete
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-info text-center">
+                <h5>No jobs posted yet.</h5>
+                <p>Click <strong>Post Another Job</strong> to create your first job listing.</p>
+            </div>
+        }
+
+        <div class="text-center mt-4">
+            <a asp-controller="Employer" asp-action="PostJob" class="btn btn-primary btn-lg">
+                Post Another Job
+            </a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Apply for Job";
+}
+
+<section class="apply-page">
+    <div class="container">
+        <div class="apply-card">
+            <p class="landing-label">Job Application</p>
+
+            <h1 class="apply-title">Apply for @ViewBag.JobTitle</h1>
+
+            <p class="apply-subtitle">
+                Complete the form below to submit your application.
+            </p>
+
+            <form asp-action="Apply" asp-controller="Applications" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="jobId" value="@ViewBag.JobId" />
+
+                <div class="row g-2">
+                    <div class="col-12">
+                        <label class="form-label">Cover Letter / Message</label>
+                        <textarea name="coverLetter"
+                                  class="form-control"
+                                  rows="5"
+                                  placeholder="Write a short message to the employer"
+                                  required></textarea>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Upload Resume</label>
+
+                        <input type="file"
+                               name="resumeFile"
+                               class="form-control"
+                               accept=".pdf,.doc,.docx"
+                               required />
+
+                        <small class="text-muted">
+                            Accepted formats: PDF, DOC, or DOCX.
+                        </small>
+                    </div>
+
+                    <div class="col-12 d-grid mt-3">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            Submit Application
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <p class="text-center mt-3 mb-0">
+                <a asp-controller="Jobs" asp-action="Index">Back to Jobs</a>
+            </p>
+        </div>
+    </div>
+</section>

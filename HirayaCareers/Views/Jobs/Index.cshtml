@@ -1,0 +1,59 @@
+﻿@model List<HirayaCareers.Models.Job>
+@{
+    ViewData["Title"] = "Browse Jobs";
+}
+
+<section class="jobs-page">
+    <div class="container">
+        <div class="text-center mb-4">
+            <p class="landing-label">Browse Jobs</p>
+            <h1 class="jobs-title">Find Opportunities That Match You</h1>
+            <p class="jobs-subtitle">Search available roles from trusted employers.</p>
+        </div>
+
+        <form asp-controller="Jobs" asp-action="Index" method="get">
+            <div class="job-search-card mb-4">
+                <div class="row g-2">
+                    <div class="col-md-5">
+                        <input type="text"
+                               name="searchTerm"
+                               value="@ViewBag.SearchTerm"
+                               class="form-control"
+                               placeholder="Job title or keyword" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text"
+                               name="location"
+                               value="@ViewBag.Location"
+                               class="form-control"
+                               placeholder="Location" />
+                    </div>
+
+                    <div class="col-md-3 d-grid">
+                        <button type="submit" class="btn btn-primary">
+                            Search Jobs
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        @foreach (var job in Model)
+        {
+            <div class="job-card">
+                <div>
+                    <h5>@job.Title</h5>
+                    <p>@job.CompanyName • @job.Location • @job.EmploymentType</p>
+                </div>
+
+                <a asp-controller="Jobs"
+                   asp-action="Details"
+                   asp-route-id="@job.JobId"
+                   class="btn btn-outline-primary">
+                    View Details
+                </a>
+            </div>
+        }
+    </div>
+</section>

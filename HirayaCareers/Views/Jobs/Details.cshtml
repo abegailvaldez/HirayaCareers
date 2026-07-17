@@ -1,0 +1,47 @@
+﻿@model HirayaCareers.Models.Job
+@{
+    ViewData["Title"] = "Job Details";
+}
+
+<section class="job-details-page">
+    <div class="container">
+        <div class="job-details-card">
+            <p class="landing-label">Job Details</p>
+
+            <h1 class="job-details-title">@Model.Title</h1>
+
+            <p class="job-meta">
+                @Model.CompanyName • @Model.Location • @Model.EmploymentType
+            </p>
+
+            <p class="text-muted">
+                Posted on @Model.DatePosted.ToString("MMMM dd, yyyy")
+            </p>
+
+            <hr />
+
+            <h5>Job Description</h5>
+            <p>
+                @Model.Description
+            </p>
+
+            <h5>Requirements</h5>
+            <p>
+                @Model.Requirements
+            </p>
+
+            <div class="job-details-actions">
+                <a asp-controller="Applications"
+                   asp-action="Apply"
+                   asp-route-id="@Model.JobId"
+                   class="btn btn-primary btn-lg">
+                    Apply Now
+                </a>
+
+                <a asp-controller="Jobs" asp-action="Index" class="btn btn-outline-primary btn-lg">
+                    Back to Jobs
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

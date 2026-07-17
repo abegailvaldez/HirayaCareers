@@ -1,0 +1,115 @@
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HirayaCareers</title>
+
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HirayaCareers.styles.css" asp-append-version="true" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom shadow-sm">
+            <div class="container">
+                @if (Context.Session.GetInt32("UserId") == null)
+                {
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                        <span class="brand-title">HIRAYA</span><br />
+                        <span class="brand-subtitle">Careers</span>
+                    </a>
+                }
+                else
+                {
+                    <div class="navbar-brand">
+                        <span class="brand-title">HIRAYA</span><br />
+                        <span class="brand-subtitle">Careers</span>
+                    </div>
+                }
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        @if (Context.Session.GetInt32("UserId") != null)
+                        {
+                            var role = Context.Session.GetString("Role");
+
+                            if (role == "JobSeeker")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Jobs" asp-action="Index">Browse Jobs</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Applications" asp-action="MyApplications">My Applications</a>
+                                </li>
+                            }
+
+                            if (role == "Employer")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Employer" asp-action="Dashboard">Dashboard</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Employer" asp-action="ManageJobs">Manage Jobs</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Employer" asp-action="PostJob">Post Job</a>
+                                </li>
+                            }
+
+                            <li class="nav-item me-3">
+                                <span class="nav-link text-dark">
+                                    👤 @Context.Session.GetString("FullName")
+                                </span>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="btn btn-outline-danger btn-sm"
+                                   asp-controller="Account"
+                                   asp-action="Logout">
+                                    Logout
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Home" asp-action="About">
+                                    About Us
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow-1">
+        @RenderBody()
+    </main>
+
+    <footer class="border-top text-muted py-3">
+        <div class="container text-center">
+            <div>&copy; 2026 HirayaCareers</div>
+            <small>Powered by ASP.NET Core MVC • Azure SQL Database • Microsoft Azure</small>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

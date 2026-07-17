@@ -1,0 +1,509 @@
+/* Global styles */
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%);
+}
+
+/* Accessibility focus */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Landing page */
+.landing-page {
+    min-height: calc(100vh - 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 4rem;
+}
+
+.landing-content {
+    max-width: 760px;
+}
+
+.landing-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #0d2b52;
+    margin-bottom: 1rem;
+}
+
+.landing-label {
+    color: #f4a000;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.landing-subtitle {
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landing-buttons .btn {
+    margin: 0.5rem;
+    border-radius: 30px;
+}
+
+/* Footer */
+footer {
+    background-color: white;
+}
+
+.navbar-brand {
+    text-decoration: none;
+    line-height: 1;
+    display: inline-block;
+}
+
+.brand-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #0d2b52;
+    letter-spacing: 1px;
+}
+
+.brand-subtitle {
+    font-size: 0.75rem;
+    color: #f4a000;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-top: -4px;
+}
+
+.navbar {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+
+
+/* About page */
+.about-page {
+    min-height: calc(100vh - 155px);
+    padding-top: 1.2rem;
+    padding-bottom: 0.5rem;
+}
+
+.about-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0d2b52;
+    margin-bottom: 0.75rem;
+}
+
+.about-text {
+    max-width: 850px;
+    margin: 0 auto;
+    color: #5f6f89;
+    font-size: 1rem;
+}
+
+.about-card {
+    background: #ffffff;
+    padding: 1rem 1.25rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(13, 43, 82, 0.08);
+    text-align: left;
+}
+
+.about-card h5 {
+    font-weight: 700;
+    color: #0d2b52;
+    margin-bottom: 0.5rem;
+}
+
+.about-card p,
+.about-card li {
+    color: #5f6f89;
+    font-size: 0.9rem;
+}
+
+.about-card ul {
+    padding-left: 1.1rem;
+    margin-bottom: 0;
+}
+
+.about-page .mb-4 {
+    margin-bottom: 0.5rem !important;
+}
+
+.about-page .g-4 {
+    --bs-gutter-y: 1rem;
+}
+
+/* Authentication pages */
+.auth-page {
+    min-height: calc(100vh - 155px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem 0;
+}
+
+.auth-card {
+    max-width: 950px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 1rem 1.8rem;
+    box-shadow: 0 10px 24px rgba(13, 43, 82, 0.08);
+}
+
+.auth-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #0d2b52;
+}
+
+.auth-subtitle {
+    color: #5f6f89;
+}
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+    padding: 0.45rem 0.8rem;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.role-options {
+    display: flex;
+    gap: 1rem;
+}
+
+.role-card {
+    flex: 1;
+    border: 1px solid #d6e2f0;
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #0d2b52;
+    font-weight: 500;
+}
+
+.role-card:hover {
+    border-color: #0d6efd;
+    background-color: #f4f8ff;
+}
+
+.login-card {
+    max-width: 520px;
+}
+
+/* Dashboard pages */
+.dashboard-page {
+    min-height: calc(100vh - 155px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.dashboard-header {
+    text-align: center;
+}
+
+.dashboard-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0d2b52;
+}
+
+.dashboard-subtitle {
+    max-width: 780px;
+    margin: 0 auto;
+    color: #5f6f89;
+    font-size: 1.05rem;
+}
+
+.dashboard-card {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(13, 43, 82, 0.08);
+    height: 100%;
+}
+
+.dashboard-card h5 {
+    font-weight: 700;
+    color: #0d2b52;
+}
+
+.dashboard-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0d6efd;
+    margin: 0.5rem 0;
+}
+
+.dashboard-card span {
+    color: #5f6f89;
+}
+
+.dashboard-actions {
+    text-align: center;
+}
+
+.dashboard-actions .btn {
+    border-radius: 30px;
+    margin: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+/* Jobs page */
+.jobs-page {
+    min-height: calc(100vh - 155px);
+    padding: 2rem 0;
+}
+
+.jobs-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0d2b52;
+}
+
+.jobs-subtitle {
+    color: #5f6f89;
+}
+
+.job-search-card,
+.job-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: .9rem 1rem;
+    box-shadow: 0 8px 20px rgba(13, 43, 82, 0.08);
+}
+
+.job-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .75rem;
+    padding: 1rem;
+}
+
+.job-card h5 {
+    color: #0d2b52;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom:.25rem;
+}
+
+.job-card p {
+    color: #5f6f89;
+    margin-bottom: 0;
+}
+
+.job-card .btn {
+    border-radius: 30px;
+    padding:.45rem 1.25rem;
+}
+
+/* Job details page */
+.job-details-page {
+    min-height: calc(100vh - 155px);
+    padding: 2rem 0;
+}
+
+.job-details-card {
+    max-width: 820px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 24px rgba(13, 43, 82, 0.08);
+}
+
+.job-details-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #0d2b52;
+}
+
+.job-meta {
+    color: #5f6f89;
+    font-size: 1.05rem;
+}
+
+.job-details-card h5 {
+    color: #0d2b52;
+    font-weight: 700;
+    margin-top: .9rem;
+    margin-bottom: .35rem;
+}
+
+.job-details-card p {
+    margin-bottom: .6rem;
+}
+
+.job-details-card ul {
+    margin-bottom: .75rem;
+}
+
+.job-details-card p,
+.job-details-card li {
+    color: #5f6f89;
+}
+
+.job-details-actions {
+    margin-top: 2rem;
+}
+
+.job-details-actions .btn {
+    border-radius:30px;
+    padding:.55rem 1.8rem;
+    margin-right:.5rem;
+}
+
+/* Apply page */
+.apply-page {
+    min-height: calc(100vh - 155px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+.apply-card {
+    max-width: 720px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 10px 24px rgba(13, 43, 82, 0.08);
+}
+
+.apply-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0d2b52;
+}
+
+.apply-subtitle {
+    color: #5f6f89;
+}
+
+/* ===========================
+   My Applications Page
+=========================== */
+
+.applications-page {
+    min-height: calc(100vh - 155px);
+    padding: 2rem 0;
+}
+
+.applications-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0d2b52;
+}
+
+.applications-subtitle {
+    color: #5f6f89;
+}
+
+.application-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(13,43,82,.08);
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.application-card h4 {
+    color: #0d2b52;
+    font-weight: 700;
+    margin-bottom: .2rem;
+}
+
+.application-card p {
+    margin: 0;
+    color: #5f6f89;
+}
+
+.application-card .badge {
+    font-size: .95rem;
+    padding: .7rem 1rem;
+    border-radius: 30px;
+}
+
+/* Employer Dashboard */
+
+.dashboard-page {
+    min-height: calc(100vh - 155px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.dashboard-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #0d2b52;
+}
+
+.dashboard-subtitle {
+    color: #5f6f89;
+}
+
+.dashboard-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(13,43,82,.08);
+}
+
+.dashboard-card h4 {
+    color: #0d2b52;
+    font-weight: 700;
+}
+
+.dashboard-card h2 {
+    font-size: 3rem;
+    color: #2563eb;
+    font-weight: 700;
+    margin: .75rem 0;
+}
+
+.dashboard-card p {
+    color: #5f6f89;
+}
+
+.dashboard-buttons .btn {
+    margin: .5rem;
+    border-radius: 30px;
+    padding: .7rem 2rem;
+}

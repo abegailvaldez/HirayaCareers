@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Employer Dashboard";
+}
+
+<section class="dashboard-page">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <p class="landing-label">EMPLOYER DASHBOARD</p>
+
+            <h1 class="dashboard-title">
+                Welcome to HirayaCareers
+            </h1>
+
+            <p class="dashboard-subtitle">
+                Manage your job listings and review applications from one place.
+            </p>
+        </div>
+
+        <div class="row g-4 mb-5">
+
+            <div class="col-md-4">
+                <div class="dashboard-card">
+                    <h4>Jobs Posted</h4>
+                    <h2>@ViewBag.JobsPosted</h2>
+                    <p>Total active and inactive job listings.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="dashboard-card">
+                    <h4>Applications</h4>
+                    <h2>@ViewBag.Applications</h2>
+                    <p>Total applications received.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="dashboard-card">
+                    <h4>Open Positions</h4>
+                    <h2>@ViewBag.OpenPositions</h2>
+                    <p>Currently accepting applicants.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>

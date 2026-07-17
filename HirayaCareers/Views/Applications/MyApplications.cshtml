@@ -1,0 +1,85 @@
+﻿@model List<HirayaCareers.Models.JobApplication>
+
+@{
+    ViewData["Title"] = "My Applications";
+}
+
+<section class="applications-page">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <p class="landing-label">My Applications</p>
+
+            <h1 class="applications-title">
+                Track Your Job Applications
+            </h1>
+
+            <p class="applications-subtitle">
+                View the status of your submitted job applications.
+            </p>
+        </div>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success text-center">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-warning text-center">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        @if (Model.Any())
+        {
+            @foreach (var application in Model)
+            {
+                <div class="application-card">
+                    <div>
+                        <h4>@application.Job?.Title</h4>
+                        <p>
+                            @application.Job?.CompanyName • @application.Job?.Location
+                        </p>
+                        <small class="text-muted">
+                            Applied on @application.AppliedAt.ToString("MMMM dd, yyyy")
+                        </small>
+                    </div>
+
+                    @if (application.Status == "Accepted")
+                    {
+                        <span class="badge bg-success">
+                            Accepted
+                        </span>
+                    }
+                    else if (application.Status == "Rejected")
+                    {
+                        <span class="badge bg-danger">
+                            Rejected
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning text-dark">
+                            @application.Status
+                        </span>
+                    }
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-info text-center">
+                <h5>No applications yet.</h5>
+                <p>Browse jobs and submit your first application.</p>
+
+                <a asp-controller="Jobs" asp-action="Index" class="btn btn-primary">
+                    Browse Jobs
+                </a>
+            </div>
+        }
+
+    </div>
+</section>
